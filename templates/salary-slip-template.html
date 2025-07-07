@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Salary Slip</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 30px;
+      color: #000;
+    }
+
+    .payslip {
+      max-width: 800px;
+      margin: auto;
+      border: 2px solid #000;
+      padding: 20px;
+    }
+
+    .header {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .header img {
+      height: 60px;
+    }
+
+    .title {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+      font-size: 12px;
+    }
+
+    td, th {
+      border: 1px solid #000;
+      padding: 8px;
+      text-align: left;
+      vertical-align: middle;
+    }
+
+    .section-title {
+      font-weight: bold;
+      background-color: #f0f0f0;
+      text-align: center;
+    }
+
+    .no-border {
+      border: none;
+    }
+
+    .signature {
+      margin-top: 30px;
+      display: flex;
+      justify-content: space-between;
+      font-size: 12px;
+    }
+
+    .note {
+      font-size: 11px;
+      margin-top: 15px;
+      color: #555;
+      text-align: center;
+    }
+
+    .net-salary-row {
+      font-weight: bold;
+    }
+
+    .amount-cell {
+      text-align: right;
+    }
+  </style>
+</head>
+<body>
+  <div class="payslip">
+    <img src="{{logoPath}}" alt="Company Logo" style="float: right; height: 60px; margin-top: 10px;" />
+    <div class="header">
+      <div class="title">PAYSLIP FOR THE MONTH OF {{month}}-{{year}}</div>
+    </div>
+
+    <table>
+      <tr>
+        <td><strong>Name</strong></td>
+        <td>{{empName}}</td>
+        <td><strong>Total Days</strong></td>
+        <td>{{totalDays}}</td>
+      </tr>
+      <tr>
+        <td><strong>Designation</strong></td>
+        <td>{{designation}}</td>
+        <td><strong>Days Worked</strong></td>
+        <td>{{daysWorked}}</td>
+      </tr>
+      <tr>
+        <td><strong>Department</strong></td>
+        <td>{{department}}</td>
+        <td><strong>LOP</strong></td>
+        <td>{{lop}}</td>
+      </tr>
+      <tr>
+        <td><strong>Date of Joining</strong></td>
+        <td>{{dateOfJoining}}</td> 
+        <td><strong>Annual Leaves</strong></td>
+        <td>{{annualLeaves}}</td>
+      </tr>
+      <tr>
+        <td><strong>PF A/c No</strong></td>
+        <td>{{uanNo}}</td>
+        <td><strong>BL/PL/ML</strong></td>
+        <td>{{plMlBl}}</td>
+      </tr>
+      <tr>
+        <td><strong>ESI No</strong></td>
+        <td>{{esiNo}}</td>
+        <td><strong>Bank A/c No</strong></td>
+        <td>{{bankAccountNo}}</td>
+      </tr>
+    </table>
+
+    <table>
+      <tr class="section-title">
+        <th>EARNINGS</th>
+        <th>AMOUNT</th>
+        <th>DEDUCTIONS</th>
+        <th>AMOUNT</th>
+      </tr>
+      <tr>
+        <td>Basic</td>
+        <td class="amount-cell">{{earnings.basic}}</td>
+        <td>ESI</td>
+        <td class="amount-cell">{{deductions.esi}}</td>
+      </tr>
+      <tr>
+        <td>HRA</td>
+        <td class="amount-cell">{{earnings.hra}}</td>
+        <td>PF</td>
+        <td class="amount-cell">{{deductions.pf}}</td>
+      </tr>
+      <tr>
+        <td>Conveyance</td>
+        <td class="amount-cell">{{earnings.conveyance}}</td>
+        <td>Professional Tax</td>
+        <td class="amount-cell">{{deductions.tax}}</td>
+      </tr>
+      <tr>
+        <td>Transport Allowances</td>
+        <td class="amount-cell">{{earnings.transportAllowances}}</td>
+        <td>GPAP</td>
+        <td class="amount-cell">{{deductions.gpap}}</td>
+      </tr>
+      <tr>
+        <td>Other Allowances</td>
+        <td class="amount-cell">{{earnings.otherAllowances}}</td>
+        <td>Other Deductions</td>
+        <td class="amount-cell">{{deductions.otherDeductions}}</td>
+      </tr>
+      <tr>
+        <td>Incentives</td>
+        <td class="amount-cell">{{earnings.incentives}}</td>
+        <td>LOP</td>
+        <td class="amount-cell">{{deductions.lop}}</td>
+      </tr>
+      <tr class="section-title">
+        <td><strong>Total Earnings</strong></td>
+        <td class="amount-cell"><strong>{{grossEarnings}}</strong></td>
+        <td><strong>Total Deductions</strong></td>
+        <td class="amount-cell"><strong>{{totalDeductions}}</strong></td>
+      </tr>
+      <tr class="net-salary-row">
+        <td colspan="2"><strong>Net Salary In Rs.: {{netSalary}}</strong></td>
+        <td colspan="2"><strong>Net Salary in Words: {{netSalaryInWords}} Rupees Only</strong></td>
+      </tr>
+    </table>
+
+    <div class="signature">
+      <div>Employer Sign: ________________</div>
+      <div>Employee Sign: ________________</div>
+    </div>
+
+    <div class="note">Note: This Payslip is computer generated, hence signature is not required.</div>
+  </div>
+</body>
+</html> 
