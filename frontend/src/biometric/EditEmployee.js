@@ -54,7 +54,7 @@ const EditEmployeeInfo = () => {
   useEffect(() => {
     const fetchEmployee = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/employee/${id}`);
+        const res = await fetch(`http://172.16.2.7:5000/api/employee/${id}`);
         const data = await res.json();
         if (!res.ok) throw new Error(data.message || 'Failed to fetch');
         setEmployee(data);
@@ -76,7 +76,7 @@ const EditEmployeeInfo = () => {
     e.preventDefault();
 
     try {
-      const response = await fetch(`http://localhost:5000/api/employee/${id}`, {
+      const response = await fetch(`http://172.16.2.7:5000/api/employee/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(employee),

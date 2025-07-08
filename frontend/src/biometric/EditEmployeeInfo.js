@@ -50,7 +50,7 @@ const EditEmployeeInfo = () => {
   const [employee, setEmployee] = useState(null);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/employee/${id}`)
+    fetch(`http://172.16.2.7:5000/api/employee/${id}`)
       .then(res => {
         if (!res.ok) throw new Error('Employee not found');
         return res.json();
@@ -71,7 +71,7 @@ const EditEmployeeInfo = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await fetch(`http://localhost:5000/api/employee/${id}`, {
+      const res = await fetch(`http://172.16.2.7:5000/api/employee/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(employee)

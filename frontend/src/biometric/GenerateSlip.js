@@ -136,7 +136,7 @@ const GenerateSlip = () => {
     try {
       const res = await axios.post('/api/slip', formData);
       if (res.data.pdfUrl) {
-        window.open(`http://localhost:5000${res.data.pdfUrl}`, '_blank');
+        window.open(`http://172.16.2.7:5000${res.data.pdfUrl}`, '_blank');
         toast.success('Salary slip generated successfully!');
       }
       setSelectedEmpId('');

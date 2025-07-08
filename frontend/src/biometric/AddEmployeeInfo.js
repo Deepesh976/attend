@@ -159,7 +159,7 @@ const AddEmployeeInfo = () => {
 const handleSubmit = async (e) => {
   e.preventDefault();
   try {
-    const res = await axios.post('http://localhost:5000/api/employee', form);
+    const res = await axios.post('http://172.16.2.7:5000/api/employee', form);
     toast.success('Employee Added!');
     setTimeout(() => navigate('/employee-info'), 1000);
   } catch (err) {

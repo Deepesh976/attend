@@ -83,7 +83,7 @@ const EmployeeInfo = () => {
   const fetchEmployeeData = () => {
     setLoading(true);
     
-    fetch('http://localhost:5000/api/employee')
+    fetch('http://172.16.2.7:5000/api/employee')
       .then(res => {
         if (!res.ok) throw new Error('Failed to fetch employees');
         return res.json();
@@ -191,7 +191,7 @@ const handleUpload = async (e) => {
     console.log("🚀 mappedData to send:", mappedData);
 
     try {
-      const res = await fetch('http://localhost:5000/api/employee/upload', {
+      const res = await fetch('http://172.16.2.7:5000/api/employee/upload', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ employees: mappedData })
@@ -237,7 +237,7 @@ const handleEdit = () => {
 
   const handleDelete = () => {
     if (selectedIds.length === 0) return toast.warn('Select at least one row to delete.');
-    fetch('http://localhost:5000/api/employee/delete', {
+    fetch('http://172.16.2.7:5000/api/employee/delete', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ ids: selectedIds })
@@ -284,7 +284,7 @@ return (
     <button
       onClick={async () => {
         try {
-          const res = await fetch('http://localhost:5000/api/employee/all', { method: 'DELETE' });
+          const res = await fetch('http://172.16.2.7:5000/api/employee/all', { method: 'DELETE' });
           if (!res.ok) throw new Error('Failed to delete all records');
           toast.success('🗑️ All employee data deleted');
           setData([]);

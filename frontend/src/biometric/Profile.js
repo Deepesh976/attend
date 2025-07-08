@@ -113,7 +113,7 @@ const Profile = () => {
     try {
       const token = localStorage.getItem('token');
 await axios.put(
-  'http://localhost:5000/api/auth/update-password',
+  'http://172.16.2.7:5000/api/auth/update-password',
   { password: form.password }, // ✅ Only send the new password
   { headers: { Authorization: `Bearer ${token}` } }
 );

@@ -112,7 +112,7 @@ const InputData = () => {
   const role = localStorage.getItem('role');
 
   useEffect(() => {
-    axios.get('http://localhost:5000/api/inputdata')
+    axios.get('http://172.16.2.7:5000/api/inputdata')
       .then(res => {
         const resData = Array.isArray(res.data) ? res.data : res.data?.data || [];
         setData(resData);
@@ -163,7 +163,7 @@ const InputData = () => {
 
 
       try {
-        const response = await axios.post('http://localhost:5000/api/inputdata/upload', unique);
+        const response = await axios.post('http://172.16.2.7:5000/api/inputdata/upload', unique);
         const resData = Array.isArray(response.data) ? response.data : response.data?.data || [];
         setData(resData);
         toast.success('Excel data uploaded and saved');
@@ -176,7 +176,7 @@ const InputData = () => {
 
   const handleRemoveUpload = async () => {
     try {
-      await axios.delete('http://localhost:5000/api/inputdata/clear');
+      await axios.delete('http://172.16.2.7:5000/api/inputdata/clear');
       setData([]);
       setSelected([]);
       setSelectAll(false);
@@ -202,7 +202,7 @@ const InputData = () => {
         return;
       }
 
-      await axios.post('http://localhost:5000/api/inputdata/delete-many', { ids: idsToDelete });
+      await axios.post('http://172.16.2.7:5000/api/inputdata/delete-many', { ids: idsToDelete });
 
       const updated = data.filter((_, i) => !selected.includes(i));
       setData(updated);
@@ -238,7 +238,7 @@ const InputData = () => {
     try {
       const updated = { ...editedRow };
       const _id = data[index]._id;
-      const res = await axios.put(`http://localhost:5000/api/inputdata/${_id}`, updated);
+      const res = await axios.put(`http://172.16.2.7:5000/api/inputdata/${_id}`, updated);
       const newData = [...data];
       newData[index] = res.data;
       setData(newData);
